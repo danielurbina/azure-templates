@@ -199,7 +199,7 @@
 			"type": "Microsoft.Compute/virtualMachines/extensions",
 			"name": "[concat(variables('vmName'), '/deployCLI')]",
 			"location": "[resourceGroup().location]",
-			"apiVersion": "[variables('apiVersionCompute')]",
+			"apiVersion": "2015-06-15",
 			"tags": {
 				"displayName": "PrepMaster"
 			},
