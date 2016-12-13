@@ -61,7 +61,7 @@
     "virtualNetworkName": "MyVNET",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "PrepScriptUrl": "[concat(parameters('_artifactsLocation'), 'scripts/deployCLI.sh')]",
-    "PrepScriptFileName": "deployCLI.sh"
+    "PrepScriptFileName": "deployCLI.sh",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
   },
   "resources": [
