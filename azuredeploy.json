@@ -2,6 +2,14 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    	"_artifactsLocation": {
+			"type": "string",
+			"metadata": {
+				"description": "The base URL where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated.",
+				"artifactsBaseUrl": ""
+			},
+			"defaultValue": "https://raw.githubusercontent.com/danielurbina/master/azure-templates/"
+		},
     "adminUsername": {
       "type": "string",
       "metadata": {
@@ -48,10 +56,12 @@
     "publicIPAddressName": "myPublicIP",
     "publicIPAddressType": "Dynamic",
     "vmStorageAccountContainerName": "vhds",
-    "vmName": "MyUbuntuVM",
+    "vmName": "MyUbuntuVMWithCLI",
     "vmSize": "Standard_D1",
     "virtualNetworkName": "MyVNET",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+    "PrepScriptUrl": "[concat(parameters('_artifactsLocation'), 'scripts/deployCLI.sh')]",
+    "PrepScriptFileName": "deployCLI.sh"
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
   },
   "resources": [
@@ -184,7 +194,31 @@
           }
         }
       }
-    }
+    },
+    {
+			"type": "Microsoft.Compute/virtualMachines/extensions",
+			"name": "[concat(variables('vmName'), '/deployCLI')]",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "[variables('apiVersionCompute')]",
+			"tags": {
+				"displayName": "PrepMaster"
+			},
+			"dependsOn": [
+				"[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+			],
+			"properties": {
+				"publisher": "Microsoft.Azure.Extensions",
+				"type": "CustomScript",
+				"typeHandlerVersion": "2.0",
+				"autoUpgradeMinorVersion": true,
+				"settings": {
+					"fileUris": [
+						"[variables('PrepScriptUrl')]"
+					],
+					"commandToExecute": "[concat('sh ', variables('PrepScriptFileName'), ' ', parameters('adminUsername'))]"
+				}
+			}
+		}
   ],
   "outputs": {
     "hostname": {

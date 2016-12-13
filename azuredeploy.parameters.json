@@ -10,6 +10,9 @@
     },
     "dnsLabelPrefix": {
       "value": "GEN-UNIQUE"
+    }, 
+      "_artifactsLocation": {
+			"value": "https://raw.githubusercontent.com/danielurbina/master/azure-templates/"
     }
   }
 }
