@@ -57,6 +57,7 @@
     "rdshVmSize": {
       "type": "string",
       "allowedValues": [
+        "Standard_D4_v2",
         "Standard_A0",
         "Standard_A1",
         "Standard_A2",
@@ -68,8 +69,7 @@
         "Standard_D1",
         "Standard_D2",
         "Standard_D3",
-        "Standard_D4",
-        "Standard_D5"
+        "Standard_D4"
       ],
       "metadata": {
         "description": "The size of the RDSH VMs"
