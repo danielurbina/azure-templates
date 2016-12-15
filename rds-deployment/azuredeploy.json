@@ -74,7 +74,7 @@
       "metadata": {
         "description": "The size of the RDSH VMs"
       },
-      "defaultValue": "Standard_A4"
+      "defaultValue": "Standard_D4_v2"
     }
   },
   "variables": {
