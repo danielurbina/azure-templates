@@ -1,0 +1,61 @@
+﻿{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"_artifactsLocation": {
+			"value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/openshift-origin-rhel/"
+		},
+		"masterVmSize": {
+			"value": "Standard_DS3_v2"
+		},
+		"nodeVmSize": {
+			"value": "Standard_DS3_v2"
+		},
+		"osImage": {
+			"value": "centos"
+		},
+		"openshiftMasterHostname": {
+			"value": "master"
+		},
+		"openshiftMasterPublicIpDnsLabelPrefix": {
+			"value": "danielumaster"
+		},
+		"nodeLbPublicIpDnsLabelPrefix": {
+			"value": "danielunode"
+		},
+		"nodePrefix": {
+			"value": "node"
+		},
+		"nodeInstanceCount": {
+			"value": 1
+		},
+		"adminUsername": {
+			"value": "azureuser"
+		},
+		"adminPassword": {
+			"value": "Password1972"
+		},
+		"sshPublicKey": {
+			"value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSvtGJ8yQVSBGqMuLhsdm+PfgrY7iX4qzXT4yoCLmLKakD3PqCVBJ/K1GywGbCbX1HjuolU+Rjg03BPj3zgXYBFA+0xCgiy8ZElA5rkpRcg+Epuldn9kjc5M/ZZDcbz8+zbblbiLPyZfSDvZ/OPiAxHTvwx/bRJUXunoRGghrx6CQZuxfaf9sJNqg7l4G6sTApx4pXWUhIas0td7X0wyKPxwJbEC0ssWfUbOeL2/Sy3aq0LAd3Oaawicmfc2WLEaOrXsPYuqzMT1b/TOVhU228hD0RitRojxAdeH/7ToJx1nO6dEM9tUR+6/5kqnTBP78tLoj2RrKop0219Pkl9ru/ danielu@danielu.net"
+
+		},
+		"subscriptionId": {
+			"value": "fc67ce16-f0ef-429c-b5bd-e28514d39033"
+		},
+		"keyVaultResourceGroup": {
+			"value": "openshift1"
+		},
+		"keyVaultName": {
+			"value": "danieluMyVaultSinpass"
+		},
+		"keyVaultSecret": {
+			"value": "MySecrets"
+		},
+		"defaultSubDomainType": {
+			"value": "xipio"
+		},
+		"defaultSubDomain": {
+			"value": "subdom"
+		}
+	}
+}
